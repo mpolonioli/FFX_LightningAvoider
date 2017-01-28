@@ -6,4 +6,12 @@ public class ParserInput {
 				return (i<arguments.length) ? arguments[i+1] : null;
 		return null;
 	}
+	public static int parseIntForCommand(String command, String num){
+		try{
+			return Integer.parseInt(num);
+		}
+		catch(NumberFormatException e){
+			throw new ParserInputException(command, num);
+		}
+	}
 }
