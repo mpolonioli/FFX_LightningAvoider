@@ -8,3 +8,7 @@ INSTRUCTIONS
   3. Run the program
   4. Now you have 5 seconds to position the mouse pointer in on a dark pixel of the game screen
   5. wait until the program ends, you can see on the standard output how many thunder have been avoided
+
+  ## Command line option
+  
+  ``[-wp <number of waiting time>] [-ml <number of max lightning avoied>]``
