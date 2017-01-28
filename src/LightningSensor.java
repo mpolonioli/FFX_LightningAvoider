@@ -6,12 +6,12 @@ import java.awt.event.KeyEvent;
 
 public class LightningSensor {
 	
-	final public int WAITINGPIXEL;
-	final public int MAXLIGHTNINGAVOIED;
+	final public int WAITING_PIXEL;
+	final public int MAXLIGHTNING_AVOIED;
 	
 	public LightningSensor(int waitinPixel, int maxLightningAvoied){
-		this.WAITINGPIXEL = waitinPixel;
-		this.MAXLIGHTNINGAVOIED = maxLightningAvoied;
+		this.WAITING_PIXEL = waitinPixel;
+		this.MAXLIGHTNING_AVOIED = maxLightningAvoied;
 	}
 	
 	public LightningSensor(){
@@ -24,10 +24,10 @@ public class LightningSensor {
 		int lightningCounter = 0;
 		
 		// wait for this.WAITINGPIXEL seconds to permit the user to point the mouse on the desire pixel
-		robot.delay(this.WAITINGPIXEL);
+		robot.delay(this.WAITING_PIXEL);
 		coord = MouseInfo.getPointerInfo().getLocation();
 
-		while (lightningCounter <= this.MAXLIGHTNINGAVOIED) {
+		while (lightningCounter <= this.MAXLIGHTNING_AVOIED) {
 			// green >= 70 means screen flash
 			if (robot.getPixelColor((int) coord.getX(), (int) coord.getY()).getGreen() >= 70) {
 				// press ENTER = X 
