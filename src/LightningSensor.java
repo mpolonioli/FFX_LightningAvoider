@@ -27,7 +27,7 @@ public class LightningSensor {
 		robot.delay(this.WAITING_PIXEL);
 		coord = MouseInfo.getPointerInfo().getLocation();
 
-		while (lightningCounter <= this.MAXLIGHTNING_AVOIED) {
+		while (lightningCounter < this.MAXLIGHTNING_AVOIED) {
 			// green >= 70 means screen flash
 			if (robot.getPixelColor((int) coord.getX(), (int) coord.getY()).getGreen() >= 70) {
 				// press ENTER = X 
