@@ -6,6 +6,7 @@ public class View {
 	System.out.println(
 		"1. Run\n"
 		+ "2. Select pixel\n"
+		+ "3. Info\n"
 		+ "Select: "
 		);
 	int in = sc.nextInt();

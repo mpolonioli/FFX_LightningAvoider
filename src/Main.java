@@ -35,7 +35,7 @@ public class Main {
 		System.out.println("Function does not implemented yet");
 		break;
 	    default:
-		System.out.println("Error menu1");
+		System.out.println("Function does not implemented yet");
 		break;
 	    }
 	}
