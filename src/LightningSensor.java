@@ -8,25 +8,31 @@ public class LightningSensor {
 
     final public int WAITING_PIXEL;
     final public int MAXLIGHTNING_AVOIED;
+    
+    public Robot robot;
+    public Point coord;
 
-    public LightningSensor(int waitinPixel, int maxLightningAvoied) {
+    public LightningSensor(int waitinPixel, int maxLightningAvoied) throws AWTException {
 	this.WAITING_PIXEL = waitinPixel;
 	this.MAXLIGHTNING_AVOIED = maxLightningAvoied;
+	this.robot = new Robot();
     }
 
-    public LightningSensor() {
+    public LightningSensor() throws AWTException {
 	this(5000, 210);
+    }
+    
+    public void setMousePoint(){
+	this.coord = MouseInfo.getPointerInfo().getLocation();
     }
 
     public void run(Runnable function) throws AWTException {
-	Point coord;
-	Robot robot = new Robot();
 	int lightningCounter = 0;
 
 	// wait for this.WAITINGPIXEL seconds to permit the user to point the
 	// mouse on the desire pixel
 	robot.delay(this.WAITING_PIXEL);
-	coord = MouseInfo.getPointerInfo().getLocation();
+	setMousePoint();
 
 	while (lightningCounter < this.MAXLIGHTNING_AVOIED) {
 	    // green >= 70 means screen flash
@@ -42,4 +48,5 @@ public class LightningSensor {
 	    }
 	}
     }
+    
 }

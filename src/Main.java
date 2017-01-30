@@ -10,20 +10,35 @@ public class Main {
 
 	int waitingPizel;
 	int maxLightningAvoied;
+	if (args.length > 0) {
+	    try {
+		String commandValue;
+		waitingPizel = ((commandValue = ParserInput.getCommand("-wp", args)) != null)
+			? ParserInput.parseIntForCommand("-wp", commandValue) : DEFAULT_WAITING_PIXEL;
+		maxLightningAvoied = ((commandValue = ParserInput.getCommand("-ml", args)) != null)
+			? ParserInput.parseIntForCommand("-ml", commandValue) : DEFAULT_WAITING_PIXEL;
+	    } catch (ParserInputException e) {
+		System.out.println(e.getMessage());
+		return;
+	    }
 
-	try {
-	    String commandValue;
-	    waitingPizel = ((commandValue = ParserInput.getCommand("-wp", args)) != null)
-		    ? ParserInput.parseIntForCommand("-wp", commandValue) : DEFAULT_WAITING_PIXEL;
-	    maxLightningAvoied = ((commandValue = ParserInput.getCommand("-ml", args)) != null)
-		    ? ParserInput.parseIntForCommand("-ml", commandValue) : DEFAULT_WAITING_PIXEL;
-	} catch (ParserInputException e) {
-	    System.out.println(e.getMessage());
-	    return;
+	    // int counter = 0;
+	    new LightningSensor(waitingPizel, maxLightningAvoied)
+		    .run(() -> System.out.println("Lightning: " + (++counter)));
+	} else {
+	    LightningSensor sensor = new LightningSensor();
+	    switch (View.mainMenu()) {
+	    case 1:
+		sensor.run(() -> System.out.println("Lightning: " + (++counter)));
+		break;
+	    case 2:
+		System.out.println("Function does not implemented yet");
+		break;
+	    default:
+		System.out.println("Error menu1");
+		break;
+	    }
 	}
-	// int counter = 0;
-	new LightningSensor(waitingPizel, maxLightningAvoied)
-		.run(() -> System.out.println("Lightning: " + (++counter)));
     }
 
 }
